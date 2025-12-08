@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" spacing="15.0"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Controller.AlumnoController">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <Label text="Gestión de Alumnos"
+           style="-fx-font-size: 18pt; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="10" vgap="10">
+        <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Matrícula:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="txtMatricula" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Grupo:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <ComboBox fx:id="cbGrupo" prefWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    </GridPane>
+
+    <HBox alignment="CENTER" spacing="10">
+        <Button text="Registrar Nuevo" onAction="#handleSaveAlumno"/>
+        <Button text="Actualizar" onAction="#handleUpdateAlumno"/>
+        <Button text="Eliminar Seleccionado" onAction="#handleDeleteAlumno"/>
+        <Button text="Exportar a CSV" onAction="#handleExportCSV"/>
+    </HBox>
+
+    <Separator/>
+
+    <Label text="Lista de Alumnos" style="-fx-font-weight: bold;"/>
+
+    <TableView fx:id="tableViewAlumnos" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colID" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colNombre" text="Nombre Completo" prefWidth="150"/>
+            <TableColumn fx:id="colMatricula" text="Matrícula" prefWidth="100"/>
+            <TableColumn fx:id="colGrupoID" text="ID Grupo" prefWidth="70"/>
+        </columns>
+    </TableView>
+
+</VBox>

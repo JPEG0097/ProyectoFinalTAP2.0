@@ -11,6 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.nio.charset.StandardCharsets;
 
 public class LoginController {
 
@@ -24,13 +27,14 @@ public class LoginController {
     private void handleLogin() {
         String user = txtUsuario.getText();
         String pass = txtContrasena.getText();
+        String passHash = sha1(pass);
 
         if (user.isEmpty() || pass.isEmpty()) {
             lblMensaje.setText("Debe ingresar usuario y contraseña.");
             return;
         }
 
-        Usuario usuario = usuarioDAO.autenticar(user, pass);
+        Usuario usuario = usuarioDAO.autenticar(user, passHash);
 
         if (usuario != null) {
             // Tarea: Autenticación exitosa.
@@ -42,6 +46,20 @@ public class LoginController {
             lblMensaje.setText("Credenciales incorrectas o usuario no encontrado.");
         }
     }
+    private static String sha1(String input) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            byte[] bytes = md.digest(input.getBytes(StandardCharsets.UTF_8));
+            StringBuilder sb = new StringBuilder();
+            for (byte b : bytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("SHA-1 no disponible", e);
+        }
+    }
+
     private void abrirVentanaPrincipal(Usuario usuario) {
         String fxmlFile;
         int width;

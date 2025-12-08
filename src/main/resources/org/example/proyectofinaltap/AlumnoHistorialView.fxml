@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="0" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Controller.AlumnoHistorialController"
+      style="-fx-background-color: #f8f9fa;">
+
+    <HBox alignment="CENTER_LEFT" spacing="15"
+          style="-fx-background-color: linear-gradient(to right, #1abc9c, #16a085); -fx-padding: 25;">
+        <Label text="" style="-fx-font-size: 32pt;"/>
+        <VBox>
+            <Label text="Mi Historial Académico"
+                   style="-fx-font-size: 22pt; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Consulta tu desempeño y calificaciones"
+                   style="-fx-font-size: 11pt; -fx-text-fill: rgba(255,255,255,0.9);"/>
+        </VBox>
+    </HBox>
+
+    <VBox spacing="20" style="-fx-padding: 25;">
+
+
+        <HBox spacing="15">
+            <VBox spacing="10" HBox.hgrow="ALWAYS"
+                  style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="" style="-fx-font-size: 24pt;"/>
+                    <VBox>
+                        <Label text="Promedio General"
+                               style="-fx-font-size: 11pt; -fx-text-fill: #7f8c8d;"/>
+                        <Label fx:id="lblPromedioGeneral" text="--"
+                               style="-fx-font-size: 28pt; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <!-- Estado Final -->
+            <VBox spacing="10" HBox.hgrow="ALWAYS"
+                  style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="" style="-fx-font-size: 24pt;"/>
+                    <VBox>
+                        <Label text="Estado Académico"
+                               style="-fx-font-size: 11pt; -fx-text-fill: #7f8c8d;"/>
+                        <Label fx:id="lblEstado" text="--"
+                               style="-fx-font-size: 20pt; -fx-font-weight: bold; -fx-text-fill: #3498db;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </HBox>
+
+        <VBox spacing="10" VBox.vgrow="ALWAYS"
+              style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="" style="-fx-font-size: 18pt;"/>
+                <Label text="Calificaciones por Materia"
+                       style="-fx-font-size: 14pt; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            </HBox>
+
+            <TableView fx:id="tableViewHistorial" VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: transparent; -fx-table-cell-border-color: #ecf0f1;">
+                <columns>
+                    <TableColumn fx:id="colMateria" text="Materia" prefWidth="250">
+                        <cellValueFactory>
+                            <javafx.scene.control.cell.PropertyValueFactory property="materia"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colCodigo" text="Código" prefWidth="120"
+                                 style="-fx-alignment: center;">
+                        <cellValueFactory>
+                            <javafx.scene.control.cell.PropertyValueFactory property="codigo"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colCalificacion" text="Calificación" prefWidth="120"
+                                 style="-fx-alignment: center;">
+                        <cellValueFactory>
+                            <javafx.scene.control.cell.PropertyValueFactory property="calificacion"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colEstado" text="Estado" prefWidth="150"
+                                 style="-fx-alignment: center;">
+                        <cellValueFactory>
+                            <javafx.scene.control.cell.PropertyValueFactory property="estado"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </VBox>
+
+        <HBox spacing="20" alignment="CENTER"
+              style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 15;">
+            <HBox spacing="8" alignment="CENTER">
+                <Label text="" style="-fx-font-size: 14pt;"/>
+                <Label text="Aprobado" style="-fx-text-fill: #27ae60; -fx-font-weight: bold;"/>
+            </HBox>
+            <Separator orientation="VERTICAL"/>
+            <HBox spacing="8" alignment="CENTER">
+                <Label text="" style="-fx-font-size: 14pt;"/>
+                <Label text="Reprobado" style="-fx-text-fill: #e74c3c; -fx-font-weight: bold;"/>
+            </HBox>
+            <Separator orientation="VERTICAL"/>
+            <HBox spacing="8" alignment="CENTER">
+                <Label text="" style="-fx-font-size: 14pt;"/>
+                <Label text="En Curso" style="-fx-text-fill: #f39c12; -fx-font-weight: bold;"/>
+            </HBox>
+        </HBox>
+    </VBox>
+</VBox>

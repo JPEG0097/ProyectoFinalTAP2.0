@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" spacing="15.0" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Controller.RegistroController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <Label text="Registro de Usuarios y Alumnos" style="-fx-font-size: 18pt; -fx-font-weight: bold;"/>
+    <Separator/>
+
+    <GridPane hgap="10" vgap="10">
+        <Label text="Usuario (Login):" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="txtNombreUsuario" promptText="nombre_unico" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <PasswordField fx:id="txtContrasena" promptText="contraseña" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Rol:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <ComboBox fx:id="cbRol" prefWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Separator orientation="HORIZONTAL" GridPane.columnSpan="2" GridPane.rowIndex="3"/>
+
+        <Label text="Matrícula:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <TextField fx:id="txtMatricula" promptText="A0001" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+        <Label text="Nombre Completo:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <TextField fx:id="txtNombreCompleto" promptText="Nombre y Apellidos" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+        <Label text="Grupo Asignado:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+        <ComboBox fx:id="cbGrupo" prefWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+    </GridPane>
+
+    <Button text="Registrar Usuario" onAction="#handleRegister" prefWidth="200"/>
+
+</VBox>

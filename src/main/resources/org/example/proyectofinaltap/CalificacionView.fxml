@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="0" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Controller.CalificacionesController"
+      style="-fx-background-color: #ecf0f1;">
+
+    <!-- Header Premium -->
+    <StackPane>
+        <Region style="-fx-background-color: linear-gradient(135deg, #fc466b 0%, #3f5efb 100%); -fx-padding: 40;"/>
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 40;">
+            <StackPane>
+                <Region prefWidth="80" prefHeight="80"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-background-radius: 40; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 15, 0, 0, 5);"/>
+                <Label text="" style="-fx-font-size: 42pt;"/>
+            </StackPane>
+            <VBox spacing="8">
+                <Label text="REGISTRO DE CALIFICACIONES"
+                       style="-fx-font-size: 26pt; -fx-font-weight: bold; -fx-text-fill: white; -fx-letter-spacing: 1px;"/>
+                <Label text="Sistema de evaluación académica por parciales"
+                       style="-fx-font-size: 12pt; -fx-text-fill: rgba(255,255,255,0.9);"/>
+            </VBox>
+        </HBox>
+    </StackPane>
+
+    <VBox spacing="25" style="-fx-padding: 30;">
+
+        <!-- Formulario con pasos numerados -->
+        <VBox spacing="20"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 15, 0, 0, 3);">
+
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <StackPane>
+                    <Region prefWidth="6" prefHeight="30"
+                            style="-fx-background-color: linear-gradient(to bottom, #fc466b, #3f5efb); -fx-background-radius: 3;"/>
+                </StackPane>
+                <Label text="Nueva Evaluación"
+                       style="-fx-font-size: 18pt; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            </HBox>
+
+            <GridPane hgap="20" vgap="20">
+                                <HBox spacing="15" GridPane.columnIndex="0" GridPane.rowIndex="0"
+                      style="-fx-background-color: #f8f9fa; -fx-background-radius: 12; -fx-padding: 20; -fx-border-color: #e1e8ed; -fx-border-radius: 12; -fx-border-width: 2;">
+                    <StackPane>
+                        <Region prefWidth="50" prefHeight="50"
+                                style="-fx-background-color: linear-gradient(to bottom right, #667eea, #764ba2); -fx-background-radius: 25;"/>
+                        <Label text="" style="-fx-font-size: 22pt;"/>
+                    </StackPane>
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="SELECCIONAR ALUMNO" style="-fx-font-weight: bold; -fx-font-size: 10pt; -fx-text-fill: #7f8c8d;"/>
+                        <ComboBox fx:id="cbAlumno" maxWidth="Infinity" promptText="Buscar estudiante..."
+                                  style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 8; -fx-font-size: 11pt;"/>
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="15" GridPane.columnIndex="1" GridPane.rowIndex="0"
+                      style="-fx-background-color: #f8f9fa; -fx-background-radius: 12; -fx-padding: 20; -fx-border-color: #e1e8ed; -fx-border-radius: 12; -fx-border-width: 2;">
+                    <StackPane>
+                        <Region prefWidth="50" prefHeight="50"
+                                style="-fx-background-color: linear-gradient(to bottom right, #f093fb, #f5576c); -fx-background-radius: 25;"/>
+                        <Label text="" style="-fx-font-size: 22pt;"/>
+                    </StackPane>
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="MATERIA" style="-fx-font-weight: bold; -fx-font-size: 10pt; -fx-text-fill: #7f8c8d;"/>
+                        <ComboBox fx:id="cbInscripcion" maxWidth="Infinity" promptText="Seleccionar materia..."
+                                  style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 8; -fx-font-size: 11pt;"/>
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="15" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                      style="-fx-background-color: #f8f9fa; -fx-background-radius: 12; -fx-padding: 20; -fx-border-color: #e1e8ed; -fx-border-radius: 12; -fx-border-width: 2;">
+                    <StackPane>
+                        <Region prefWidth="50" prefHeight="50"
+                                style="-fx-background-color: linear-gradient(to bottom right, #4facfe, #00f2fe); -fx-background-radius: 25;"/>
+                        <Label text="" style="-fx-font-size: 22pt;"/>
+                    </StackPane>
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="CALIFICACIÓN (0-10)" style="-fx-font-weight: bold; -fx-font-size: 10pt; -fx-text-fill: #7f8c8d;"/>
+                        <TextField fx:id="txtCalificacion" promptText="Ej: 8.5"
+                                   style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 14pt; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-border-color: #e1e8ed; -fx-border-radius: 8; -fx-border-width: 2;"/>
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="15" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                      style="-fx-background-color: #f8f9fa; -fx-background-radius: 12; -fx-padding: 20; -fx-border-color: #e1e8ed; -fx-border-radius: 12; -fx-border-width: 2;">
+                    <StackPane>
+                        <Region prefWidth="50" prefHeight="50"
+                                style="-fx-background-color: linear-gradient(to bottom right, #fa709a, #fee140); -fx-background-radius: 25;"/>
+                        <Label text="" style="-fx-font-size: 22pt;"/>
+                    </StackPane>
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="NÚMERO DE PARCIAL" style="-fx-font-weight: bold; -fx-font-size: 10pt; -fx-text-fill: #7f8c8d;"/>
+                        <ComboBox fx:id="cbNumeroParcial" maxWidth="Infinity" promptText="1, 2 o 3"
+                                  style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 8; -fx-font-size: 11pt;"/>
+                    </VBox>
+                </HBox>
+            </GridPane>
+
+            <!-- Botones de Acción -->
+            <HBox alignment="CENTER" spacing="15" style="-fx-padding: 20 0 0 0;">
+                <Button text="  GUARDAR  " onAction="#handleSaveCalificacion"
+                        style="-fx-background-color: linear-gradient(to right, #2ecc71, #27ae60); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13pt; -fx-padding: 15 40; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(46,204,113,0.5), 15, 0, 0, 5);"/>
+
+                <Button text="  ELIMINAR  " onAction="#handleDeleteCalificacion"
+                        style="-fx-background-color: linear-gradient(to right, #e74c3c, #c0392b); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13pt; -fx-padding: 15 40; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(231,76,60,0.5), 15, 0, 0, 5);"/>
+
+                <Button text="   VER PROMEDIO  " onAction="#handleConsultarPromedio"
+                        style="-fx-background-color: linear-gradient(to right, #3498db, #2980b9); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13pt; -fx-padding: 15 40; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(52,152,219,0.5), 15, 0, 0, 5);"/>
+            </HBox>
+        </VBox>
+
+        <!-- Tabla Premium -->
+        <VBox spacing="15" VBox.vgrow="ALWAYS"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 15, 0, 0, 3);">
+
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <StackPane>
+                    <Region prefWidth="50" prefHeight="50"
+                            style="-fx-background-color: linear-gradient(to bottom right, #fc466b, #3f5efb); -fx-background-radius: 25;"/>
+                    <Label text="" style="-fx-font-size: 24pt;"/>
+                </StackPane>
+                <VBox>
+                    <Label text="Historial de Calificaciones"
+                           style="-fx-font-size: 16pt; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <Label text="Registro completo de evaluaciones parciales"
+                           style="-fx-font-size: 11pt; -fx-text-fill: #95a5a6;"/>
+                </VBox>
+            </HBox>
+
+            <TableView fx:id="tableViewParciales" VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: #fafbfc; -fx-background-radius: 10; -fx-table-cell-border-color: #e1e8ed;">
+                <columns>
+                    <TableColumn fx:id="colID" text="ID" prefWidth="100" style="-fx-alignment: center; -fx-font-weight: bold;"/>
+                    <TableColumn fx:id="colInscripcionID" text="Inscripción" prefWidth="140" style="-fx-alignment: center;"/>
+                    <TableColumn fx:id="colCalificacion" text="Calificación" prefWidth="140" style="-fx-alignment: center; -fx-font-weight: bold;"/>
+                    <TableColumn fx:id="colNumeroParcial" text="Parcial" prefWidth="120" style="-fx-alignment: center;"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </VBox>
+</VBox>

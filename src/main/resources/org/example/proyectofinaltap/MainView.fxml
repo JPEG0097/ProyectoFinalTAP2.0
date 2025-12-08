@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainBorderPane" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.Principal"> <left>
+    <VBox spacing="10" alignment="TOP_LEFT" style="-fx-background-color: #f4f4f4; -fx-padding: 15;">
+        <Label text="MENÚ PRINCIPAL" style="-fx-font-weight: bold; -fx-font-size: 14pt;"/>
+        <Separator/>
+
+        <Button text="1. Grupos" maxWidth="Infinity" onAction="#showGrupoView"/>
+        <Button text="2. Alumnos" maxWidth="Infinity" onAction="#showAlumnoView"/>
+        <Button text="3. Materias" maxWidth="Infinity" onAction="#showMateriaView"/>
+        <Button text="4. Inscripciones" maxWidth="Infinity" onAction="#showInscripcionView"/>
+        <Button text="5. Calificaciones" maxWidth="Infinity" onAction="#showCalificacionView"/>
+
+        <Separator/>
+
+        <Button text="6. Registro de Usuarios" maxWidth="Infinity" onAction="#showRegistroView"/>
+
+        <Button text="Cerrar Sesión" maxWidth="Infinity" onAction="#handleLogout"/>
+
+    </VBox>
+</left>
+
+    <center>
+        <VBox alignment="CENTER" style="-fx-background-color: white;">
+            <Label text="Bienvenido al Sistema de Calificaciones" style="-fx-font-size: 20pt;"/>
+            <Label text="Seleccione una opción del menú lateral." style="-fx-font-size: 14pt;"/>
+        </VBox>
+    </center>
+
+    <bottom>
+        <Label fx:id="lblStatus" text="Estado: Inicializando..." style="-fx-padding: 5;"/>
+    </bottom>
+</BorderPane>

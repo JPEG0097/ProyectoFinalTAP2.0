@@ -1,0 +1,81 @@
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-base: #ffffff;
+}
+
+.label-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.label-subtitle {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #34495e;
+}
+
+.label {
+    -fx-font-size: 13px;
+}
+
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 14px;
+    -fx-background-radius: 6px;
+}
+
+.button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.button:pressed {
+    -fx-background-color: #1f618d;
+}
+
+.button-danger {
+    -fx-background-color: #e74c3c;
+}
+
+.button-danger:hover {
+    -fx-background-color: #c0392b;
+}
+
+/* ========== CAMPOS DE TEXTO ========== */
+.text-field, .password-field, .combo-box, .date-picker {
+    -fx-padding: 6px;
+    -fx-background-color: #f7f9fa;
+    -fx-border-color: #bdc3c7;
+    -fx-background-radius: 4px;
+}
+
+.text-field:focused, .password-field:focused, .combo-box:focused {
+    -fx-border-color: #2980b9;
+}
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+}
+
+.table-column-header {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* ========== PANEL LATERAL ========== */
+.sidebar {
+    -fx-background-color: #ecf0f1;
+}
+
+.sidebar .button {
+    -fx-background-color: #95a5a6;
+}
+
+.sidebar .button:hover {
+    -fx-background-color: #7f8c8d;
+}
+
