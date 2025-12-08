@@ -4,47 +4,147 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="TOP_CENTER" spacing="15.0"
-      xmlns="http://javafx.com/javafx"
+<VBox spacing="0" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="Controller.AlumnoController">
+      fx:controller="Controller.AlumnoController"
+      style="-fx-background-color: #ecf0f1;">
 
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+    <!-- Header Premium para Alumnos -->
+    <StackPane>
+        <Region style="-fx-background-color: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%); -fx-padding: 40;"/>
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 40;">
+            <StackPane>
+                <Region prefWidth="80" prefHeight="80"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-background-radius: 40; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 15, 0, 0, 5);"/>
+                <Label text="👨‍🎓" style="-fx-font-size: 42pt;"/>
+            </StackPane>
+            <VBox spacing="8">
+                <Label text="GESTIÓN DE ALUMNOS"
+                       style="-fx-font-size: 26pt; -fx-font-weight: bold; -fx-text-fill: white; -fx-letter-spacing: 1px;"/>
+                <Label text="Administración integral de estudiantes y sus datos académicos"
+                       style="-fx-font-size: 12pt; -fx-text-fill: rgba(255,255,255,0.9);"/>
+            </VBox>
+        </HBox>
+    </StackPane>
 
-    <Label text="Gestión de Alumnos"
-           style="-fx-font-size: 18pt; -fx-font-weight: bold;"/>
+    <!-- Contenido Principal -->
+    <VBox spacing="25" style="-fx-padding: 30;">
 
-    <GridPane hgap="10" vgap="10">
-        <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <!-- Tarjeta de Formulario Premium -->
+        <VBox spacing="20"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 15, 0, 0, 3);">
 
-        <Label text="Matrícula:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-        <TextField fx:id="txtMatricula" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <StackPane>
+                    <Region prefWidth="6" prefHeight="30"
+                            style="-fx-background-color: linear-gradient(to bottom, #2193b0, #6dd5ed); -fx-background-radius: 3;"/>
+                </StackPane>
+                <Label text="Datos del Alumno"
+                       style="-fx-font-size: 18pt; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            </HBox>
 
-        <Label text="Grupo:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-        <ComboBox fx:id="cbGrupo" prefWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-    </GridPane>
+            <GridPane hgap="20" vgap="20">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="33"/>
+                    <ColumnConstraints percentWidth="33"/>
+                    <ColumnConstraints percentWidth="33"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints prefHeight="80"/>
+                    <RowConstraints prefHeight="80"/>
+                </rowConstraints>
 
-    <HBox alignment="CENTER" spacing="10">
-        <Button text="Registrar Nuevo" onAction="#handleSaveAlumno"/>
-        <Button text="Actualizar" onAction="#handleUpdateAlumno"/>
-        <Button text="Eliminar Seleccionado" onAction="#handleDeleteAlumno"/>
-        <Button text="Exportar a CSV" onAction="#handleExportCSV"/>
-    </HBox>
+                <!-- Nombre -->
+                <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="👤" style="-fx-font-size: 14pt;"/>
+                        <Label text="NOMBRE COMPLETO" style="-fx-font-weight: bold; -fx-font-size: 10pt; -fx-text-fill: #7f8c8d;"/>
+                    </HBox>
+                    <TextField fx:id="txtNombre" promptText="Ej: Juan Pérez González"
+                               style="-fx-background-color: #f8f9fa; -fx-background-radius: 10; -fx-padding: 15; -fx-font-size: 12pt; -fx-border-color: #e1e8ed; -fx-border-radius: 10; -fx-border-width: 2; -fx-prompt-text-fill: #bdc3c7;"/>
+                </VBox>
 
-    <Separator/>
+                <!-- Matrícula -->
+                <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="🎫" style="-fx-font-size: 14pt;"/>
+                        <Label text="MATRÍCULA" style="-fx-font-weight: bold; -fx-font-size: 10pt; -fx-text-fill: #7f8c8d;"/>
+                    </HBox>
+                    <TextField fx:id="txtMatricula" promptText="Ej: A12345678"
+                               style="-fx-background-color: #f8f9fa; -fx-background-radius: 10; -fx-padding: 15; -fx-font-size: 12pt; -fx-border-color: #e1e8ed; -fx-border-radius: 10; -fx-border-width: 2; -fx-prompt-text-fill: #bdc3c7;"/>
+                </VBox>
 
-    <Label text="Lista de Alumnos" style="-fx-font-weight: bold;"/>
+                <!-- Grupo -->
+                <VBox spacing="8" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="👥" style="-fx-font-size: 14pt;"/>
+                        <Label text="GRUPO" style="-fx-font-weight: bold; -fx-font-size: 10pt; -fx-text-fill: #7f8c8d;"/>
+                    </HBox>
+                    <ComboBox fx:id="cbGrupo" promptText="Seleccione un grupo"
+                              style="-fx-background-color: #f8f9fa; -fx-background-radius: 10; -fx-padding: 10 15; -fx-font-size: 12pt; -fx-border-color: #e1e8ed; -fx-border-radius: 10; -fx-border-width: 2;"/>
+                </VBox>
 
-    <TableView fx:id="tableViewAlumnos" VBox.vgrow="ALWAYS">
-        <columns>
-            <TableColumn fx:id="colID" text="ID" prefWidth="50"/>
-            <TableColumn fx:id="colNombre" text="Nombre Completo" prefWidth="150"/>
-            <TableColumn fx:id="colMatricula" text="Matrícula" prefWidth="100"/>
-            <TableColumn fx:id="colGrupoID" text="ID Grupo" prefWidth="70"/>
-        </columns>
-    </TableView>
+                <!-- Botones de Acción -->
+                <HBox alignment="CENTER" spacing="15" GridPane.columnSpan="3" GridPane.rowIndex="1"
+                      style="-fx-padding: 10 0 0 0;">
+                    <Button text="  ➕  REGISTRAR  " onAction="#handleSaveAlumno"
+                            style="-fx-background-color: linear-gradient(to right, #2193b0, #6dd5ed); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 11pt; -fx-padding: 12 25; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(33,147,176,0.4), 12, 0, 0, 4);"/>
 
+                    <Button text="  ✏️  ACTUALIZAR  " onAction="#handleUpdateAlumno"
+                            style="-fx-background-color: linear-gradient(to right, #f39c12, #e67e22); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 11pt; -fx-padding: 12 25; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(243,156,18,0.4), 12, 0, 0, 4);"/>
+
+                    <Button text="  🗑️  ELIMINAR  " onAction="#handleDeleteAlumno"
+                            style="-fx-background-color: linear-gradient(to right, #e74c3c, #c0392b); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 11pt; -fx-padding: 12 25; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(231,76,60,0.4), 12, 0, 0, 4);"/>
+
+                    <Button text="  📊  EXPORTAR CSV  " onAction="#handleExportCSV"
+                            style="-fx-background-color: linear-gradient(to right, #9b59b6, #8e44ad); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 11pt; -fx-padding: 12 25; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(155,89,182,0.4), 12, 0, 0, 4);"/>
+                </HBox>
+            </GridPane>
+        </VBox>
+
+        <!-- Tabla Premium de Alumnos -->
+        <VBox spacing="15"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 15, 0, 0, 3);">
+
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <StackPane>
+                    <Region prefWidth="50" prefHeight="50"
+                            style="-fx-background-color: linear-gradient(to bottom right, #2193b0, #6dd5ed); -fx-background-radius: 25;"/>
+                    <Label text="📋" style="-fx-font-size: 24pt;"/>
+                </StackPane>
+                <VBox>
+                    <Label text="Alumnos Registrados"
+                           style="-fx-font-size: 16pt; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <Label text="Lista completa de estudiantes del sistema"
+                           style="-fx-font-size: 11pt; -fx-text-fill: #95a5a6;"/>
+                </VBox>
+            </HBox>
+
+            <TableView fx:id="tableViewAlumnos" VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: #fafbfc; -fx-background-radius: 10; -fx-border-color: #e1e8ed; -fx-border-radius: 10;">
+                <columns>
+                    <TableColumn fx:id="colID" text="🔢 ID" prefWidth="80"
+                                 style="-fx-alignment: center; -fx-font-weight: bold;"/>
+                    <TableColumn fx:id="colNombre" text="👤 Nombre Completo" prefWidth="250"/>
+                    <TableColumn fx:id="colMatricula" text="🎫 Matrícula" prefWidth="120"
+                                 style="-fx-alignment: center;"/>
+                    <TableColumn fx:id="colGrupoID" text="👥 Grupo" prefWidth="100"
+                                 style="-fx-alignment: center;"/>
+                    <TableColumn text="📅 Fecha Registro" prefWidth="150"
+                                 style="-fx-alignment: center;"/>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+            </TableView>
+
+            <!-- Footer de la tabla con estadísticas -->
+            <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-padding: 10 0 0 0;">
+                <Label text="Total de alumnos:"
+                       style="-fx-font-size: 10pt; -fx-text-fill: #7f8c8d;"/>
+                <Label text="0"
+                       style="-fx-font-size: 10pt; -fx-font-weight: bold; -fx-text-fill: #2193b0;"/>
+            </HBox>
+        </VBox>
+    </VBox>
 </VBox>
