@@ -9,13 +9,11 @@ public class Alumno {
 
     public Alumno() {}
 
-    // Constructor que acepta solo 2 argumentos (para casos donde no se necesita el grupo/usuario)
     public Alumno(String nombre, String matricula) {
         this.nombre = nombre;
         this.matricula = matricula;
     }
 
-    // Constructor para REGISTRO COMPLETO (4 argumentos: el que el Controller necesita)
     public Alumno(String nombre, String matricula, int idGrupo, int idUsuario) {
         this.nombre = nombre;
         this.matricula = matricula;
@@ -23,7 +21,6 @@ public class Alumno {
         this.idUsuario = idUsuario;
     }
 
-    // Getters y Setters...
     public int getIdAlumno() { return idAlumno; }
     public void setIdAlumno(int idAlumno) { this.idAlumno = idAlumno; }
     public String getNombre() { return nombre; }

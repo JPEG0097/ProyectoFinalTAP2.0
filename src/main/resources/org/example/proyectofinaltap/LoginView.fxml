@@ -3,24 +3,45 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.shape.Rectangle?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="Controller.LoginController">
-    <padding>
-        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0"/>
-    </padding>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
 
-    <Label text="Inicio de Sesión" style="-fx-font-weight: bold; -fx-font-size: 16pt;"/>
+    <Rectangle width="800" height="600" style="-fx-fill: #667eea;"/>
 
-    <GridPane hgap="10" vgap="10">
-        <Label text="Usuario:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <TextField fx:id="txtUsuario" promptText="admin" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    <VBox alignment="CENTER" spacing="20" maxWidth="400" maxHeight="500"
+          style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 40; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 20, 0, 0, 5);">
 
-        <Label text="Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-        <PasswordField fx:id="txtContrasena" promptText="1234" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-    </GridPane>
+        <VBox alignment="CENTER" spacing="10">
+            <Label text="SIS"
+                   style="-fx-font-size: 36pt; -fx-font-weight: bold; -fx-text-fill: #667eea;"/>
+            <Label text="Sistema Académico"
+                   style="-fx-font-weight: bold; -fx-font-size: 18pt; -fx-text-fill: #2c3e50;"/>
+            <Label text="Portal de Calificaciones"
+                   style="-fx-font-size: 11pt; -fx-text-fill: #7f8c8d;"/>
+        </VBox>
 
-    <Button text="Iniciar Sesión" onAction="#handleLogin" prefWidth="150"/>
+        <VBox spacing="15" style="-fx-padding: 20 0;">
+            <VBox spacing="5">
+                <Label text="Usuario"
+                       style="-fx-font-size: 11pt; -fx-text-fill: #5a6c7d;"/>
+                <TextField fx:id="txtUsuario" promptText="Ingresa tu usuario"
+                           style="-fx-background-color: #f8f9fa; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 12pt;"/>
+            </VBox>
 
-    <Label fx:id="lblMensaje" style="-fx-text-fill: red;"/>
-</VBox>
+            <VBox spacing="5">
+                <Label text="Contraseña"
+                       style="-fx-font-size: 11pt; -fx-text-fill: #5a6c7d;"/>
+                <PasswordField fx:id="txtContrasena" promptText="Ingresa tu contraseña"
+                               style="-fx-background-color: #f8f9fa; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 12pt;"/>
+            </VBox>
+        </VBox>
+
+        <Button text="INICIAR SESIÓN" onAction="#handleLogin"
+                style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14pt; -fx-padding: 12 40; -fx-background-radius: 8;"/>
+
+        <Label fx:id="lblMensaje" text=""
+               style="-fx-text-fill: #e74c3c; -fx-font-size: 10pt; -fx-padding: 10;"/>
+    </VBox>
+</StackPane>

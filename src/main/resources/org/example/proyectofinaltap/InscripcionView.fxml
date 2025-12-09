@@ -4,40 +4,109 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="TOP_CENTER" spacing="15.0" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="Controller.InscripcionController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<VBox spacing="0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Controller.InscripcionController"
+      style="-fx-background-color: #f8f9fa;">
 
-    <Label text="Gestión de Inscripciones (Alumno a Materia)" style="-fx-font-size: 18pt; -fx-font-weight: bold;"/>
-
-    <GridPane hgap="10" vgap="10">
-        <Label text="Alumno:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <ComboBox fx:id="cbAlumno" prefWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-
-        <Label text="Materia:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-        <ComboBox fx:id="cbMateria" prefWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-
-        <Label text="Fecha de Inscripción:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-        <DatePicker fx:id="dpFechaInscripcion" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-    </GridPane>
-
-    <HBox alignment="CENTER" spacing="10">
-        <Button text="Registrar Inscripción" onAction="#handleSaveInscripcion"/>
-        <Button text="Eliminar Inscripción" onAction="#handleDeleteInscripcion"/>
+    <HBox alignment="CENTER_LEFT" spacing="15"
+          style="-fx-background-color: linear-gradient(to right, #8E2DE2, #4A00E0); -fx-padding: 25;">
+        <Label text="I"
+               style="-fx-font-size: 32pt; -fx-font-weight: bold; -fx-text-fill: white;"/>
+        <VBox>
+            <Label text="GESTIÓN DE INSCRIPCIONES"
+                   style="-fx-font-size: 22pt; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Asignación de materias a alumnos"
+                   style="-fx-font-size: 11pt; -fx-text-fill: rgba(255,255,255,0.9);"/>
+        </VBox>
     </HBox>
 
-    <Separator/>
+    <VBox spacing="25" style="-fx-padding: 30;">
 
-    <Label text="Inscripciones Registradas" style="-fx-font-weight: bold;"/>
-    <TableView fx:id="tableViewInscripciones" VBox.vgrow="ALWAYS">
-        <columns>
-            <TableColumn fx:id="colID" text="ID" prefWidth="50"/>
-            <TableColumn fx:id="colAlumnoID" text="Alumno ID" prefWidth="100"/>
-            <TableColumn fx:id="colMateriaID" text="Materia ID" prefWidth="100"/>
-            <TableColumn fx:id="colFecha" text="Fecha" prefWidth="150"/>
-        </columns>
-    </TableView>
+        <VBox spacing="20"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 15, 0, 0, 3);">
 
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <Region prefWidth="6" prefHeight="30"
+                        style="-fx-background-color: linear-gradient(to bottom, #8E2DE2, #4A00E0); -fx-background-radius: 3;"/>
+                <Label text="Nueva Inscripción"
+                       style="-fx-font-size: 18pt; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            </HBox>
+
+            <GridPane hgap="20" vgap="20">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="33"/>
+                    <ColumnConstraints percentWidth="33"/>
+                    <ColumnConstraints percentWidth="33"/>
+                </columnConstraints>
+
+                <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="●" style="-fx-font-size: 14pt; -fx-text-fill: #8E2DE2;"/>
+                        <Label text="ALUMNO" style="-fx-font-weight: bold; -fx-font-size: 10pt; -fx-text-fill: #7f8c8d;"/>
+                    </HBox>
+                    <ComboBox fx:id="cbAlumno" promptText="Seleccione un alumno"
+                              style="-fx-background-color: #f8f9fa; -fx-background-radius: 10; -fx-padding: 10 15; -fx-font-size: 12pt;"/>
+                </VBox>
+
+                <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="●" style="-fx-font-size: 14pt; -fx-text-fill: #4A00E0;"/>
+                        <Label text="MATERIA" style="-fx-font-weight: bold; -fx-font-size: 10pt; -fx-text-fill: #7f8c8d;"/>
+                    </HBox>
+                    <ComboBox fx:id="cbMateria" promptText="Seleccione una materia"
+                              style="-fx-background-color: #f8f9fa; -fx-background-radius: 10; -fx-padding: 10 15; -fx-font-size: 12pt;"/>
+                </VBox>
+
+                <VBox spacing="8" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="●" style="-fx-font-size: 14pt; -fx-text-fill: #9b59b6;"/>
+                        <Label text="FECHA INSCRIPCIÓN" style="-fx-font-weight: bold; -fx-font-size: 10pt; -fx-text-fill: #7f8c8d;"/>
+                    </HBox>
+                    <DatePicker fx:id="dpFechaInscripcion"
+                                style="-fx-background-color: #f8f9fa; -fx-background-radius: 10; -fx-font-size: 12pt;"/>
+                </VBox>
+
+                <HBox alignment="CENTER" spacing="15" GridPane.columnSpan="3" GridPane.rowIndex="1"
+                      style="-fx-padding: 10 0 0 0;">
+                    <Button text="INSCRIBIR ALUMNO" onAction="#handleSaveInscripcion"
+                            style="-fx-background-color: linear-gradient(to right, #8E2DE2, #4A00E0); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 11pt; -fx-padding: 12 25; -fx-background-radius: 10;"/>
+
+                    <Button text="ELIMINAR INSCRIPCIÓN" onAction="#handleDeleteInscripcion"
+                            style="-fx-background-color: linear-gradient(to right, #e74c3c, #c0392b); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 11pt; -fx-padding: 12 25; -fx-background-radius: 10;"/>
+
+                    <Button text="ACTUALIZAR LISTA" onAction="#handleRefresh"
+                            style="-fx-background-color: linear-gradient(to right, #3498db, #2980b9); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 11pt; -fx-padding: 12 25; -fx-background-radius: 10;"/>
+                </HBox>
+            </GridPane>
+        </VBox>
+
+        <VBox spacing="15"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 15, 0, 0, 3);">
+
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <Region prefWidth="50" prefHeight="50"
+                        style="-fx-background-color: linear-gradient(to bottom right, #8E2DE2, #4A00E0); -fx-background-radius: 25;"/>
+                <VBox>
+                    <Label text="Inscripciones Registradas"
+                           style="-fx-font-size: 16pt; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <Label text="Lista de asignaciones alumno-materia"
+                           style="-fx-font-size: 11pt; -fx-text-fill: #95a5a6;"/>
+                </VBox>
+            </HBox>
+
+            <TableView fx:id="tableViewInscripciones" VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: #fafbfc; -fx-background-radius: 10;">
+                <columns>
+                    <TableColumn fx:id="colID" text="ID" prefWidth="70"/>
+                    <TableColumn text="Alumno" prefWidth="200"/>
+                    <TableColumn text="Materia" prefWidth="200"/>
+                    <TableColumn fx:id="colAlumnoID" text="ID Alumno" prefWidth="90"/>
+                    <TableColumn fx:id="colMateriaID" text="ID Materia" prefWidth="90"/>
+                    <TableColumn fx:id="colFecha" text="Fecha Inscripción" prefWidth="150"/>
+                    <TableColumn text="Estado" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </VBox>
 </VBox>

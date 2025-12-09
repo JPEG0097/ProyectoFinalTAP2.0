@@ -19,7 +19,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        //inicia la conexión (Singleton)
         DataBase.ConexionBD.getInstance();
 
         launch(args);

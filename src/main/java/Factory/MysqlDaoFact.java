@@ -2,7 +2,6 @@ package Factory;
 
 import DAO.*;
 
-// Fábrica que crea objetos DAO específicos para MySQL
 public class MysqlDaoFact implements DAOFactory {
 
     @Override
