@@ -1,5 +1,7 @@
 package Strategy;
 
+import Model.Alumno;
+
 public class CriterioSimple implements CriterioAprobacion {
 
     @Override

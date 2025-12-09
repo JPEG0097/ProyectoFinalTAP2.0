@@ -4,73 +4,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController"
-           style="-fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);">
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Controller.LoginController">
+    <padding>
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0"/>
+    </padding>
 
-    <Pane style="-fx-background-color: transparent;">
-        <children>
-            <Region layoutX="-100" layoutY="-100" prefWidth="300" prefHeight="300"
-                    style="-fx-background-color: rgba(255,255,255,0.1); -fx-background-radius: 150;"/>
-            <Region layoutX="400" layoutY="300" prefWidth="400" prefHeight="400"
-                    style="-fx-background-color: rgba(255,255,255,0.05); -fx-background-radius: 200;"/>
-        </children>
-    </Pane>
+    <Label text="Inicio de Sesión" style="-fx-font-weight: bold; -fx-font-size: 16pt;"/>
 
-    <VBox alignment="CENTER" spacing="30" maxWidth="450" maxHeight="600"
-          style="-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 30, 0, 0, 10);">
-        <padding>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0"/>
-        </padding>
+    <GridPane hgap="10" vgap="10">
+        <Label text="Usuario:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="txtUsuario" promptText="admin" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
-        <VBox alignment="CENTER" spacing="15">
-            <StackPane>
-                <Region prefWidth="100" prefHeight="100"
-                        style="-fx-background-color: linear-gradient(to bottom right, #667eea, #764ba2); -fx-background-radius: 50; -fx-effect: dropshadow(gaussian, rgba(102,126,234,0.5), 20, 0, 0, 5);"/>
-                <Label text="🎓" style="-fx-font-size: 52pt;"/>
-            </StackPane>
-            <Label text="Sistema Académico"
-                   style="-fx-font-weight: bold; -fx-font-size: 24pt; -fx-text-fill: #2c3e50;"/>
-            <Label text="Portal de Calificaciones y Gestión Estudiantil"
-                   style="-fx-font-size: 12pt; -fx-text-fill: #7f8c8d;"/>
-        </VBox>
+        <Label text="Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <PasswordField fx:id="txtContrasena" promptText="1234" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    </GridPane>
 
-        <VBox spacing="20">
-            <VBox spacing="8">
-                <Label text="USUARIO" style="-fx-font-weight: bold; -fx-font-size: 10pt; -fx-text-fill: #7f8c8d; -fx-padding: 0 0 0 5;"/>
-                <HBox spacing="0" alignment="CENTER_LEFT"
-                      style="-fx-background-color: #f8f9fa; -fx-background-radius: 12; -fx-border-color: #e1e8ed; -fx-border-radius: 12; -fx-border-width: 2;">
-                    <Label text="👤" style="-fx-font-size: 18pt; -fx-padding: 0 15 0 15;"/>
-                    <TextField fx:id="txtUsuario" promptText="Ingresa tu usuario"
-                               style="-fx-background-color: transparent; -fx-padding: 15; -fx-font-size: 12pt; -fx-border-color: transparent; -fx-prompt-text-fill: #bdc3c7;"
-                               HBox.hgrow="ALWAYS"/>
-                </HBox>
-            </VBox>
+    <Button text="Iniciar Sesión" onAction="#handleLogin" prefWidth="150"/>
 
-            <VBox spacing="8">
-                <Label text="CONTRASEÑA" style="-fx-font-weight: bold; -fx-font-size: 10pt; -fx-text-fill: #7f8c8d; -fx-padding: 0 0 0 5;"/>
-                <HBox spacing="0" alignment="CENTER_LEFT"
-                      style="-fx-background-color: #f8f9fa; -fx-background-radius: 12; -fx-border-color: #e1e8ed; -fx-border-radius: 12; -fx-border-width: 2;">
-                    <Label text="🔒" style="-fx-font-size: 18pt; -fx-padding: 0 15 0 15;"/>
-                    <PasswordField fx:id="txtContrasena" promptText="Ingresa tu contraseña"
-                                   style="-fx-background-color: transparent; -fx-padding: 15; -fx-font-size: 12pt; -fx-border-color: transparent; -fx-prompt-text-fill: #bdc3c7;"
-                                   HBox.hgrow="ALWAYS"/>
-                </HBox>
-            </VBox>
-        </VBox>
-
-        <VBox spacing="15">
-            <Button text="INICIAR SESIÓN" onAction="#handleLogin"
-                    maxWidth="Infinity" prefHeight="55"
-                    style="-fx-background-color: linear-gradient(to right, #667eea, #764ba2); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14pt; -fx-background-radius: 12; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(102,126,234,0.4), 15, 0, 0, 5);"/>
-
-            <Label fx:id="lblMensaje" alignment="CENTER" maxWidth="Infinity"
-                   style="-fx-text-fill: #e74c3c; -fx-font-weight: bold; -fx-font-size: 11pt; -fx-padding: 10; -fx-background-color: rgba(231,76,60,0.1); -fx-background-radius: 8;"/>
-        </VBox>
-
-        <HBox alignment="CENTER" spacing="5">
-            <Label text="" style="-fx-font-size: 12pt;"/>
-            <Label text="Acceso seguro protegido"
-                   style="-fx-text-fill: #95a5a6; -fx-font-size: 10pt;"/>
-        </HBox>
-    </VBox>
-</StackPane>
+    <Label fx:id="lblMensaje" style="-fx-text-fill: red;"/>
+</VBox>

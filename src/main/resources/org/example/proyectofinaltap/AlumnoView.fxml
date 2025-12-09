@@ -4,154 +4,42 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox spacing="0" xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="Controller.AlumnoController"
-      style="-fx-background-color: #ecf0f1;">
+<VBox alignment="TOP_CENTER" spacing="15.0" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Controller.AlumnoController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
 
-    <!-- Encabezado moderno estilo grupos -->
-    <StackPane>
-        <Region style="-fx-background-color: linear-gradient(to right, #00c6ff, #0072ff);
-                        -fx-padding: 40;"/>
-        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 40;">
-            <StackPane>
-                <Region prefWidth="80" prefHeight="80"
-                        style="-fx-background-color: rgba(255,255,255,0.2);
-                               -fx-background-radius: 50;
-                               -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 15, 0, 0, 5);"/>
-            </StackPane>
+    <Label text="Gestión de Alumnos" style="-fx-font-size: 18pt; -fx-font-weight: bold;"/>
 
-            <VBox>
-                <Label text="Gestión de Alumnos"
-                       style="-fx-font-size: 28pt; -fx-font-weight: bold;
-                              -fx-text-fill: white;"/>
-                <Label text="Control completo de estudiantes, matrículas y grupos"
-                       style="-fx-font-size: 12pt; -fx-text-fill: rgba(255,255,255,0.9);"/>
-            </VBox>
-        </HBox>
-    </StackPane>
+    <GridPane hgap="10" vgap="10">
+        <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
-    <!-- Contenido -->
-    <VBox spacing="25" style="-fx-padding: 30;">
+        <Label text="Matrícula:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="txtMatricula" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
-        <!-- Tarjeta del formulario -->
-        <VBox spacing="20"
-              style="-fx-background-color: white; -fx-background-radius: 15;
-                     -fx-padding: 30;
-                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 15, 0, 0, 3);">
+        <Label text="Grupo:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <ComboBox fx:id="cbGrupo" prefWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    </GridPane>
 
-            <HBox spacing="10" alignment="CENTER_LEFT">
-                <Region prefWidth="6" prefHeight="35"
-                        style="-fx-background-color: linear-gradient(to bottom, #00c6ff, #0072ff);
-                               -fx-background-radius: 3;"/>
-                <Label text="Datos del Alumno"
-                       style="-fx-font-size: 20px; -fx-font-weight: bold;
-                              -fx-text-fill: #2c3e50;"/>
-            </HBox>
+    <HBox alignment="CENTER" spacing="10">
+        <Button text="Registrar Nuevo" onAction="#handleSaveAlumno"/>
+        <Button text="Actualizar" onAction="#handleUpdateAlumno"/>
+        <Button text="Eliminar Seleccionado" onAction="#handleDeleteAlumno"/>
+        <Button text="Exportar a CSV" onAction="#handleExportCSV"/>
+    </HBox>
 
-            <GridPane hgap="20" vgap="20">
-                <columnConstraints>
-                    <ColumnConstraints percentWidth="33"/>
-                    <ColumnConstraints percentWidth="33"/>
-                    <ColumnConstraints percentWidth="33"/>
-                </columnConstraints>
+    <Separator/>
 
-                <!-- Campo: Nombre -->
-                <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                    <Label text="NOMBRE COMPLETO"
-                           style="-fx-font-size: 10pt; -fx-font-weight: bold;
-                                  -fx-text-fill: #7f8c8d;"/>
-                    <TextField fx:id="txtNombre" promptText="Ej: Juan Pérez"
-                               style="-fx-background-color: #f8f9fa; -fx-background-radius: 10;
-                                      -fx-padding: 12; -fx-font-size: 12pt;
-                                      -fx-border-color: #e1e8ed;
-                                      -fx-border-radius: 10; -fx-border-width: 2;"/>
-                </VBox>
-
-                <!-- Campo: Matrícula -->
-                <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                    <Label text="MATRÍCULA"
-                           style="-fx-font-size: 10pt; -fx-font-weight: bold;
-                                  -fx-text-fill: #7f8c8d;"/>
-                    <TextField fx:id="txtMatricula" promptText="Ej: 22030486"
-                               style="-fx-background-color: #f8f9fa; -fx-background-radius: 10;
-                                      -fx-padding: 12; -fx-font-size: 12pt;
-                                      -fx-border-color: #e1e8ed; -fx-border-radius: 10;
-                                      -fx-border-width: 2;"/>
-                </VBox>
-
-                <!-- Campo: Grupo -->
-                <VBox spacing="5" GridPane.columnIndex="2" GridPane.rowIndex="0">
-                    <Label text="GRUPO"
-                           style="-fx-font-size: 10pt; -fx-font-weight: bold;
-                                  -fx-text-fill: #7f8c8d;"/>
-                    <ComboBox fx:id="cbGrupo" promptText="Seleccione"
-                              style="-fx-background-color: #f8f9fa; -fx-background-radius: 10;
-                                     -fx-padding: 10; -fx-font-size: 12pt;
-                                     -fx-border-color: #e1e8ed; -fx-border-radius: 10;
-                                     -fx-border-width: 2;"/>
-                </VBox>
-
-                <!-- Botones -->
-                <HBox alignment="CENTER" spacing="15" GridPane.columnSpan="3"
-                      GridPane.rowIndex="1" style="-fx-padding: 10 0 0 0;">
-                    <Button text="REGISTRAR" onAction="#handleSaveAlumno"
-                            style="-fx-background-color: linear-gradient(to right, #00c6ff, #0072ff);
-                                   -fx-text-fill: white; -fx-font-weight: bold;
-                                   -fx-background-radius: 10; -fx-padding: 12 25;"/>
-
-                    <Button text="ACTUALIZAR" onAction="#handleUpdateAlumno"
-                            style="-fx-background-color: linear-gradient(to right, #f39c12, #e67e22);
-                                   -fx-text-fill: white; -fx-font-weight: bold;
-                                   -fx-background-radius: 10; -fx-padding: 12 25;"/>
-
-                    <Button text="ELIMINAR" onAction="#handleDeleteAlumno"
-                            style="-fx-background-color: linear-gradient(to right, #e74c3c, #c0392b);
-                                   -fx-text-fill: white; -fx-font-weight: bold;
-                                   -fx-background-radius: 10; -fx-padding: 12 25;"/>
-
-                    <Button text="EXPORTAR CSV" onAction="#handleExportCSV"
-                            style="-fx-background-color: linear-gradient(to right, #9b59b6, #8e44ad);
-                                   -fx-text-fill: white; -fx-font-weight: bold;
-                                   -fx-background-radius: 10; -fx-padding: 12 25;"/>
-                </HBox>
-
-            </GridPane>
-        </VBox>
-
-        <!-- Tarjeta de la tabla -->
-        <VBox spacing="15"
-              style="-fx-background-color: white; -fx-background-radius: 15;
-                     -fx-padding: 25;
-                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 15, 0, 0, 3);">
-
-            <HBox alignment="CENTER_LEFT" spacing="15">
-                <Region prefWidth="45" prefHeight="45"
-                        style="-fx-background-color: linear-gradient(to bottom right, #00c6ff, #0072ff);
-                               -fx-background-radius: 50;"/>
-                <VBox>
-                    <Label text="Alumnos Registrados"
-                           style="-fx-font-size: 18pt; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
-                    <Label text="Lista completa de estudiantes"
-                           style="-fx-font-size: 11pt; -fx-text-fill: #95a5a6;"/>
-                </VBox>
-            </HBox>
-
-            <TableView fx:id="tableViewAlumnos"
-                       style="-fx-background-color: #fafbfc; -fx-background-radius: 10;
-                              -fx-border-color: #e1e8ed; -fx-border-radius: 10;"
-                       VBox.vgrow="ALWAYS">
-                <columns>
-                    <TableColumn fx:id="colID" text="ID" prefWidth="60"/>
-                    <TableColumn fx:id="colNombre" text="Nombre Completo" prefWidth="230"/>
-                    <TableColumn fx:id="colMatricula" text="Matrícula" prefWidth="120"/>
-                    <TableColumn fx:id="colGrupoID" text="Grupo" prefWidth="80"/>
-                    <TableColumn fx:id="colPromedio" text="Promedio" prefWidth="90"/>
-                </columns>
-            </TableView>
-
-        </VBox>
-
-    </VBox>
+    <Label text="Lista de Alumnos" style="-fx-font-weight: bold;"/>
+    <TableView fx:id="tableViewAlumnos" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colID" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colNombre" text="Nombre Completo" prefWidth="150"/>
+            <TableColumn fx:id="colMatricula" text="Matrícula" prefWidth="100"/>
+            <TableColumn fx:id="colGrupoID" text="ID Grupo" prefWidth="70"/>
+        </columns>
+    </TableView>
 
 </VBox>

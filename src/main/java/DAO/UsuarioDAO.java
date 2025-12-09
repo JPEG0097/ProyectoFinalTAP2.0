@@ -11,13 +11,12 @@ public class UsuarioDAO {
 
     // CREATE (Autenticación)
     public Usuario autenticar(String nombreUsuario, String contrasenaIngresada) {
-        String sql = "SELECT id_usuario, nombre_usuario, rol FROM usuarios WHERE nombre_usuario = ? AND (contraseña = ? OR contraseña = SHA1(?))";
+        String sql = "SELECT id_usuario, nombre_usuario, rol FROM usuarios WHERE nombre_usuario = ? AND contraseña = SHA1(?)";
         Usuario usuario = null;
         Connection conn = getConnection();
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, nombreUsuario);
             stmt.setString(2, contrasenaIngresada);
-            stmt.setString(3, contrasenaIngresada);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     usuario = new Usuario();
@@ -32,19 +31,12 @@ public class UsuarioDAO {
 
     // CREATE (Registro)
     public void save(Usuario usuario) {
-        String sql = "INSERT INTO usuarios (nombre_usuario, contraseña, rol) VALUES ("
-                // Si ya viene como hash SHA-1 (40 hex), lo insertamos tal cual; de lo contrario, aplicamos SHA1 en SQL
-                + "? , "
-                + "CASE WHEN LENGTH(?) = 40 AND ? REGEXP '^[0-9a-fA-F]{40}$' THEN ? ELSE SHA1(?) END, "
-                + "? )";
+        String sql = "INSERT INTO usuarios (nombre_usuario, contraseña, rol) VALUES (?, SHA1(?), ?)";
         Connection conn = getConnection();
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, usuario.getNombreUsuario());
             stmt.setString(2, usuario.getContraseña());
-            stmt.setString(3, usuario.getContraseña());
-            stmt.setString(4, usuario.getContraseña());
-            stmt.setString(5, usuario.getContraseña());
-            stmt.setString(6, usuario.getRol());
+            stmt.setString(3, usuario.getRol());
             stmt.executeUpdate();
             try (ResultSet rs = stmt.getGeneratedKeys()) {
                 if (rs.next()) {
